@@ -30,7 +30,8 @@ pipeline{
 		      steps {
 			      script{
                 sh 'docker build . -t raavada/devops-training:$Docker_tag'
-                withCredentials([string(credentialsId: 'docker_password', variable: 'docker_password')]) {
+                
+		withCredentials([string(credentialsId: 'docker', variable: 'docker_password')]) {
     
                 sh '''docker login -u raavada -p $docker_password
                 docker push raavada/devops-training:$Docker_tag
