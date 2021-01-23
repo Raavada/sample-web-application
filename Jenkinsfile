@@ -29,8 +29,7 @@ pipeline{
               stage('build'){
 		      steps {
 			      script{
-                sh 'docker build . -t raavada/devops-training:$Docker_tag'
-                
+                sh 'docker build . -t raavada/devops-training:$Docker_tag'                
 		withCredentials([string(credentialsId: 'docker', variable: 'docker_password')]) {
     
                 sh '''docker login -u raavada -p $docker_password
